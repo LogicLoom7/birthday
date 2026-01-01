@@ -9,60 +9,46 @@
 body{
   margin:0;
   padding:20px;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom,#ffdde1,#ee9ca7);
+  font-family:Arial, sans-serif;
+  background:linear-gradient(to bottom,#ffdde1,#ee9ca7);
   height:100vh;
   overflow:hidden;
-  color:#333;
 }
 
-/* ===== GRID LAYOUT ===== */
+/* GRID */
 #layout{
   display:grid;
-  grid-template-columns: 1fr 1.2fr 1fr;
+  grid-template-columns:1fr 1.2fr 1fr;
   gap:20px;
   height:100%;
-  align-items:start;
 }
 
-/* ===== LEFT MESSAGE BOX (PINK) ===== */
+/* LEFT MESSAGE */
 #messageBox{
   display:none;
   margin-top:80px;
-  background: linear-gradient(135deg, #ffd6e7, #ffb3c6);
+  background:linear-gradient(135deg,#ffd6e7,#ffb3c6);
   padding:18px;
   height:65vh;
   overflow-y:auto;
-  box-shadow:
-    inset 0 0 20px rgba(255,255,255,0.4),
-    0 10px 30px rgba(0,0,0,.2);
-  border-radius:10px;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
-
 #typedMessage{
-  font-size:16px;
-  line-height:1.6;
   white-space:pre-line;
+  line-height:1.6;
   color:#5a0f2e;
 }
 
-/* ===== CENTER COLUMN ===== */
-#center{
-  text-align:center;
-}
-
+/* CENTER */
+#center{text-align:center;}
 #center img{
   display:block;
-  margin:0 auto 12px auto;
+  margin:0 auto 14px;
   width:220px;
   border-radius:20px;
   box-shadow:0 8px 20px rgba(0,0,0,.25);
 }
-
-h1{
-  margin-bottom:10px;
-}
-
 button{
   padding:14px 26px;
   font-size:18px;
@@ -74,37 +60,56 @@ button{
   margin:6px;
 }
 
-/* ===== RIGHT PROPOSAL BOX (PINK – SAME AS LEFT) ===== */
+/* RIGHT PROPOSAL */
 #proposalBox{
   display:none;
   margin-top:80px;
-  background: linear-gradient(135deg, #ffd6e7, #ffb3c6);
+  background:linear-gradient(135deg,#ffd6e7,#ffb3c6);
   padding:20px;
   height:40vh;
-  box-shadow:
-    inset 0 0 20px rgba(255,255,255,0.4),
-    0 10px 30px rgba(0,0,0,.2);
+  border-radius:12px;
   text-align:center;
-  border-radius:10px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
   color:#5a0f2e;
 }
 
-/* ===== CAKE AREA ===== */
+/* ===== SIMPLE CAKE ===== */
 #cakeArea{
   display:none;
-  margin-top:15px;
+  margin-top:25px;
 }
 
-/* ===== CANDLE ===== */
-#candle{
-  width:12px;
-  height:45px;
-  background:repeating-linear-gradient(
-    45deg,#fff,#fff 4px,#ff9bb3 4px,#ff9bb3 8px
-  );
-  margin:auto;
-  border-radius:6px;
+#simpleCake{
   position:relative;
+  width:200px;
+  height:120px;
+  margin:0 auto;
+  background:linear-gradient(to bottom,#f6c1d1,#e79ab1);
+  border-radius:20px;
+  box-shadow:inset 0 -6px rgba(0,0,0,.08),0 16px 25px rgba(0,0,0,.3);
+}
+
+#cakeText{
+  position:absolute;
+  bottom:30px;
+  width:100%;
+  text-align:center;
+  font-size:24px;
+  font-weight:bold;
+  color:#fff;
+  letter-spacing:2px;
+}
+
+/* CANDLE */
+#candle{
+  position:absolute;
+  top:-35px;
+  left:50%;
+  transform:translateX(-50%);
+  width:12px;
+  height:35px;
+  background:repeating-linear-gradient(45deg,#fff,#fff 4px,#ff7aa2 4px,#ff7aa2 8px);
+  border-radius:6px;
 }
 
 #flame{
@@ -112,8 +117,8 @@ button{
   top:-18px;
   left:50%;
   transform:translateX(-50%);
-  width:16px;
-  height:20px;
+  width:14px;
+  height:18px;
   background:radial-gradient(circle,gold,orange,red);
   border-radius:50%;
   animation:flicker .15s infinite alternate;
@@ -124,110 +129,86 @@ button{
   to{transform:translateX(-50%) scale(1.2);}
 }
 
-/* ===== ULTRA-REAL ROUND CAKE ===== */
-#cake{
-  width:220px;
-  height:220px;
-  border-radius:50%;
-  position:relative;
-  margin:10px auto;
-  overflow:hidden;
-  background:#ffb3c6;
-  box-shadow:
-    inset 0 -10px 0 rgba(0,0,0,.08),
-    0 12px 25px rgba(0,0,0,.25);
-}
-
-.cake-top{
-  position:absolute;
-  top:0;
-  width:100%;
-  height:60px;
-  background:linear-gradient(#fff0f5,#ffd6e7);
-  border-radius:50%;
-  text-align:center;
-  line-height:60px;
-  font-size:24px;
-  font-weight:bold;
-  color:#ff165d;
-  z-index:3;
-}
-
-.cake-top::after{
-  content:"";
-  position:absolute;
-  bottom:-8px;
-  left:0;
-  width:100%;
-  height:16px;
-  background:radial-gradient(circle,#fff 40%,transparent 41%);
-  background-size:18px 18px;
-}
-
-.drip{
-  position:absolute;
-  top:60px;
-  width:100%;
-  height:22px;
-  background:linear-gradient(#5a2d0c,#3d1f0a);
-  border-radius:0 0 30px 30px;
-}
-
-.layer{
-  position:absolute;
-  width:100%;
-}
-
-.layer.one{ top:82px; height:46px; background:#ffb3c6; }
-.layer.two{ top:128px; height:46px; background:#fff; }
-.layer.three{ top:174px; height:46px; background:#ff8fab; }
-
-/* ===== PLATE ===== */
 #plate{
-  width:260px;
-  height:20px;
+  width:240px;
+  height:18px;
   background:#eee;
   border-radius:50%;
-  margin:auto;
-  box-shadow:0 10px 20px rgba(0,0,0,.2);
+  margin:12px auto 0;
+  box-shadow:0 12px 18px rgba(0,0,0,.3);
 }
 
-/* ===== EFFECTS ===== */
-.firework{
+/* QUALITIES */
+#qualities{
+  display:none;
+  margin-top:15px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.qualityBox{
+  padding:12px;
+  background:#fff;
+  border-radius:10px;
+  font-weight:bold;
+  color:#ff3f6c;
+  box-shadow:0 6px 15px rgba(0,0,0,.15);
+  cursor:pointer;
+  opacity:0;
+  transform:scale(.8);
+  animation:popIn .5s forwards;
+}
+
+@keyframes popIn{
+  to{opacity:1;transform:scale(1);}
+}
+
+#foreverText{
+  display:none;
+  margin-top:15px;
+  font-size:22px;
+  font-weight:bold;
+  color:#ff165d;
+}
+
+/* HEART FLOAT */
+.floatingHeart{
   position:fixed;
-  width:6px;
-  height:6px;
+  bottom:-20px;
+  font-size:22px;
+  animation:floatHeart 6s linear forwards;
+  pointer-events:none;
+  opacity:.8;
+}
+
+@keyframes floatHeart{
+  to{transform:translateY(-110vh) scale(1.4);opacity:0;}
+}
+
+/* HEART BURST */
+.heartBurst{
+  position:fixed;
+  font-size:18px;
+  pointer-events:none;
+  animation:heartBurst 1.2s forwards;
+}
+
+@keyframes heartBurst{
+  to{transform:translateY(-60px) scale(1.5);opacity:0;}
+}
+
+/* FIREWORK PARTICLES */
+.particle{
+  position:fixed;
+  width:4px;
+  height:4px;
   border-radius:50%;
-  animation:explode 2s forwards;
   pointer-events:none;
 }
 
-@keyframes explode{
-  to{transform:scale(30);opacity:0;}
-}
-
-.heart{
-  position:fixed;
-  bottom:-10px;
-  font-size:24px;
-  animation:floatUp 6s linear infinite;
-  pointer-events:none;
-}
-
-@keyframes floatUp{
-  to{transform:translateY(-100vh);opacity:0;}
-}
-
-/* ===== MOBILE ===== */
 @media(max-width:900px){
-  #layout{
-    grid-template-columns:1fr;
-    overflow-y:auto;
-  }
-  #messageBox,#proposalBox{
-    margin-top:20px;
-    height:auto;
-  }
+  #layout{grid-template-columns:1fr;overflow-y:auto;}
 }
 </style>
 </head>
@@ -236,45 +217,48 @@ button{
 
 <div id="layout">
 
-  <!-- LEFT -->
-  <div>
-    <div id="messageBox">
-      <p id="typedMessage"></p>
-    </div>
+<!-- LEFT -->
+<div>
+  <div id="messageBox">
+    <p id="typedMessage"></p>
   </div>
+</div>
 
-  <!-- CENTER -->
-  <div id="center">
-    <h1>Happiest Birthday My Nani 🎂💖</h1>
+<!-- CENTER -->
+<div id="center">
+  <h1>Happiest Birthday My Nani 🎂💖</h1>
+  <img src="image/nani.jpeg">
 
-    <img src="image/nani.jpeg" alt="My Nani">
+  <button onclick="celebrate()">Click here to celebrate 🎉</button><br>
+  <button onclick="cutCake()">Cut the Cake 🎂</button>
 
-    <button onclick="celebrate()">Click here to celebrate 🎉🎶</button><br>
-    <button onclick="cutCake()">Cut the Cake 🎂</button>
-
-    <div id="cakeArea">
+  <div id="cakeArea">
+    <div id="simpleCake">
       <div id="candle"><div id="flame"></div></div>
-
-      <div id="cake">
-        <div class="cake-top">NANI</div>
-        <div class="drip"></div>
-        <div class="layer one"></div>
-        <div class="layer two"></div>
-        <div class="layer three"></div>
-      </div>
-
-      <div id="plate"></div>
-      <button onclick="blowCandle()">Blow Candle 💨</button>
+      <div id="cakeText">NANI</div>
     </div>
+    <div id="plate"></div>
   </div>
+</div>
 
-  <!-- RIGHT -->
-  <div>
-    <div id="proposalBox">
-      <h2>💍 Will you marry me, Nani? 💖</h2>
-      <button onclick="sayYes()">YES 😭❤️</button>
+<!-- RIGHT -->
+<div>
+  <div id="proposalBox">
+    <h2>💍 BE MY FOREVER 💖</h2>
+
+    <button onclick="revealQualities()">YOU ARE 💖</button>
+
+    <div id="qualities">
+      <div class="qualityBox" onclick="heartBurst(event)">💖 Gorgeous</div>
+      <div class="qualityBox" onclick="heartBurst(event)">🌸 Adorable</div>
+      <div class="qualityBox" onclick="heartBurst(event)">💕 Sweetheart</div>
+      <div class="qualityBox" onclick="revealForever(event)">✨ Charming</div>
     </div>
+
+    <div id="foreverText">💍 My Forever 💖</div><br>
+    <button onclick="sayYes()">YES ❤️</button>
   </div>
+</div>
 
 </div>
 
@@ -298,56 +282,87 @@ let i=0;
 function celebrate(){
   bgMusic.play();
   messageBox.style.display="block";
-  fireworks();
   typeText();
+  fireCelebration();
 }
 
 function typeText(){
-  if(i < text.length){
-    typedMessage.innerHTML += text.charAt(i++);
+  if(i<text.length){
+    typedMessage.innerHTML+=text.charAt(i++);
     setTimeout(typeText,40);
-  } else {
-    setTimeout(() => {
-      proposalBox.style.display = "block";
-    }, 800);
+  }else{
+    proposalBox.style.display="block";
   }
 }
 
 function cutCake(){
   cakeArea.style.display="block";
-  fireworks();
 }
 
-function blowCandle(){
-  flame.style.opacity="0";
-  fireworks();
+function revealQualities(){
+  qualities.style.display="grid";
 }
 
-function sayYes(){
-  fireworks();
-  alert("She said YES 💖💍");
-}
-
-function fireworks(){
-  for(let i=0;i<35;i++){
-    const f=document.createElement("div");
-    f.className="firework";
-    f.style.left=Math.random()*100+"vw";
-    f.style.top=Math.random()*60+"vh";
-    f.style.background=`hsl(${Math.random()*360},100%,60%)`;
-    document.body.appendChild(f);
-    setTimeout(()=>f.remove(),2000);
+function heartBurst(e){
+  for(let i=0;i<6;i++){
+    const h=document.createElement("div");
+    h.className="heartBurst";
+    h.innerHTML="💖";
+    h.style.left=e.clientX+(Math.random()*20-10)+"px";
+    h.style.top=e.clientY+(Math.random()*20-10)+"px";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),1200);
   }
 }
 
+function revealForever(e){
+  heartBurst(e);
+  foreverText.style.display="block";
+}
+
+function realisticFirework(x,y){
+  for(let i=0;i<30;i++){
+    const p=document.createElement("div");
+    p.className="particle";
+    document.body.appendChild(p);
+    let a=Math.random()*Math.PI*2;
+    let s=Math.random()*6+3;
+    let vx=Math.cos(a)*s;
+    let vy=Math.sin(a)*s;
+    let px=x,py=y,g=0.15,l=0;
+    p.style.background=`hsl(${Math.random()*360},100%,60%)`;
+    const t=setInterval(()=>{
+      px+=vx;py+=vy;vy+=g;l++;
+      p.style.left=px+"px";
+      p.style.top=py+"px";
+      p.style.opacity=1-l/60;
+      if(l>60){clearInterval(t);p.remove();}
+    },16);
+  }
+}
+
+function fireCelebration(){
+  for(let i=0;i<4;i++){
+    setTimeout(()=>{
+      realisticFirework(Math.random()*innerWidth,Math.random()*innerHeight*0.5);
+    },i*400);
+  }
+}
+
+function sayYes(){
+  fireCelebration();
+}
+
+/* FLOATING HEARTS */
 setInterval(()=>{
   const h=document.createElement("div");
-  h.className="heart";
+  h.className="floatingHeart";
   h.innerHTML="💖";
   h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(18+Math.random()*20)+"px";
   document.body.appendChild(h);
   setTimeout(()=>h.remove(),6000);
-},600);
+},400);
 </script>
 
 </body>
