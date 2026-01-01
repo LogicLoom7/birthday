@@ -1,121 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>For My Nani 💖</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>For My Nani 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
-      text-align: center;
-      color: #333;
-      overflow-x: hidden;
-    }
+<style>
+body{
+  margin:0;
+  padding:20px;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom,#ffdde1,#ee9ca7);
+  height:100vh;
+  overflow:hidden;
+  color:#333;
+}
 
-    img {
-      width: 220px;
-      border-radius: 20px;
-      margin-top: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    }
+/* ===== GRID LAYOUT ===== */
+#layout{
+  display:grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap:20px;
+  height:100%;
+  align-items:start;
+}
 
-    button {
-      margin: 15px;
-      padding: 14px 26px;
-      font-size: 18px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      background: #ff4d6d;
-      color: white;
-    }
+/* ===== LEFT MESSAGE BOX (PINK) ===== */
+#messageBox{
+  display:none;
+  margin-top:80px;
+  background: linear-gradient(135deg, #ffd6e7, #ffb3c6);
+  padding:18px;
+  height:65vh;
+  overflow-y:auto;
+  box-shadow:
+    inset 0 0 20px rgba(255,255,255,0.4),
+    0 10px 30px rgba(0,0,0,.2);
+  border-radius:10px;
+}
 
-    #messageBox, #proposal, #yesMessage {
-      display: none;
-      margin-top: 20px;
-    }
+#typedMessage{
+  font-size:16px;
+  line-height:1.6;
+  white-space:pre-line;
+  color:#5a0f2e;
+}
 
-    #typedMessage {
-      font-size: 18px;
-      line-height: 1.6;
-      white-space: pre-line;
-    }
+/* ===== CENTER COLUMN ===== */
+#center{
+  text-align:center;
+}
 
-    /* FLOATING HEARTS */
-    .heart {
-      position: fixed;
-      bottom: -10px;
-      font-size: 24px;
-      animation: floatUp 6s linear infinite;
-      opacity: 0.7;
-    }
+#center img{
+  display:block;
+  margin:0 auto 12px auto;
+  width:220px;
+  border-radius:20px;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
 
-    @keyframes floatUp {
-      from { transform: translateY(0); opacity: 1; }
-      to { transform: translateY(-100vh); opacity: 0; }
-    }
+h1{
+  margin-bottom:10px;
+}
 
-    /* FIREWORKS */
-    .firework {
-      position: fixed;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      animation: explode 1.5s ease-out forwards;
-    }
+button{
+  padding:14px 26px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  background:#ff4d6d;
+  color:white;
+  cursor:pointer;
+  margin:6px;
+}
 
-    @keyframes explode {
-      from { transform: scale(1); opacity: 1; }
-      to { transform: scale(25); opacity: 0; }
-    }
-  </style>
+/* ===== RIGHT PROPOSAL BOX (PINK – SAME AS LEFT) ===== */
+#proposalBox{
+  display:none;
+  margin-top:80px;
+  background: linear-gradient(135deg, #ffd6e7, #ffb3c6);
+  padding:20px;
+  height:40vh;
+  box-shadow:
+    inset 0 0 20px rgba(255,255,255,0.4),
+    0 10px 30px rgba(0,0,0,.2);
+  text-align:center;
+  border-radius:10px;
+  color:#5a0f2e;
+}
+
+/* ===== CAKE AREA ===== */
+#cakeArea{
+  display:none;
+  margin-top:15px;
+}
+
+/* ===== CANDLE ===== */
+#candle{
+  width:12px;
+  height:45px;
+  background:repeating-linear-gradient(
+    45deg,#fff,#fff 4px,#ff9bb3 4px,#ff9bb3 8px
+  );
+  margin:auto;
+  border-radius:6px;
+  position:relative;
+}
+
+#flame{
+  position:absolute;
+  top:-18px;
+  left:50%;
+  transform:translateX(-50%);
+  width:16px;
+  height:20px;
+  background:radial-gradient(circle,gold,orange,red);
+  border-radius:50%;
+  animation:flicker .15s infinite alternate;
+}
+
+@keyframes flicker{
+  from{transform:translateX(-50%) scale(1);}
+  to{transform:translateX(-50%) scale(1.2);}
+}
+
+/* ===== ULTRA-REAL ROUND CAKE ===== */
+#cake{
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  position:relative;
+  margin:10px auto;
+  overflow:hidden;
+  background:#ffb3c6;
+  box-shadow:
+    inset 0 -10px 0 rgba(0,0,0,.08),
+    0 12px 25px rgba(0,0,0,.25);
+}
+
+.cake-top{
+  position:absolute;
+  top:0;
+  width:100%;
+  height:60px;
+  background:linear-gradient(#fff0f5,#ffd6e7);
+  border-radius:50%;
+  text-align:center;
+  line-height:60px;
+  font-size:24px;
+  font-weight:bold;
+  color:#ff165d;
+  z-index:3;
+}
+
+.cake-top::after{
+  content:"";
+  position:absolute;
+  bottom:-8px;
+  left:0;
+  width:100%;
+  height:16px;
+  background:radial-gradient(circle,#fff 40%,transparent 41%);
+  background-size:18px 18px;
+}
+
+.drip{
+  position:absolute;
+  top:60px;
+  width:100%;
+  height:22px;
+  background:linear-gradient(#5a2d0c,#3d1f0a);
+  border-radius:0 0 30px 30px;
+}
+
+.layer{
+  position:absolute;
+  width:100%;
+}
+
+.layer.one{ top:82px; height:46px; background:#ffb3c6; }
+.layer.two{ top:128px; height:46px; background:#fff; }
+.layer.three{ top:174px; height:46px; background:#ff8fab; }
+
+/* ===== PLATE ===== */
+#plate{
+  width:260px;
+  height:20px;
+  background:#eee;
+  border-radius:50%;
+  margin:auto;
+  box-shadow:0 10px 20px rgba(0,0,0,.2);
+}
+
+/* ===== EFFECTS ===== */
+.firework{
+  position:fixed;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  animation:explode 2s forwards;
+  pointer-events:none;
+}
+
+@keyframes explode{
+  to{transform:scale(30);opacity:0;}
+}
+
+.heart{
+  position:fixed;
+  bottom:-10px;
+  font-size:24px;
+  animation:floatUp 6s linear infinite;
+  pointer-events:none;
+}
+
+@keyframes floatUp{
+  to{transform:translateY(-100vh);opacity:0;}
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:900px){
+  #layout{
+    grid-template-columns:1fr;
+    overflow-y:auto;
+  }
+  #messageBox,#proposalBox{
+    margin-top:20px;
+    height:auto;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <h1>Happiest Birthday My Nani 🎂💖</h1>
+<div id="layout">
 
-  <img src="image/nani.jpeg" alt="My Nani">
-
-  <br>
-
-  <button onclick="playMusic()">Play Music 🎶</button>
-
-  <audio id="bgMusic">
-    <source src="song/musik.mp3" type="audio/mpeg">
-  </audio>
-
-  <button onclick="startTyping()">Click here Nani 💌</button>
-
-  <div id="messageBox">
-    <p id="typedMessage"></p>
-    <button onclick="showProposal()">Continue 💞</button>
+  <!-- LEFT -->
+  <div>
+    <div id="messageBox">
+      <p id="typedMessage"></p>
+    </div>
   </div>
 
-  <div id="proposal">
-    <h2>💍 Will you marry me, Nani? 💖</h2>
-    <button onclick="sayYes()">YES 😭❤️</button>
+  <!-- CENTER -->
+  <div id="center">
+    <h1>Happiest Birthday My Nani 🎂💖</h1>
+
+    <img src="image/nani.jpeg" alt="My Nani">
+
+    <button onclick="celebrate()">Click here to celebrate 🎉🎶</button><br>
+    <button onclick="cutCake()">Cut the Cake 🎂</button>
+
+    <div id="cakeArea">
+      <div id="candle"><div id="flame"></div></div>
+
+      <div id="cake">
+        <div class="cake-top">NANI</div>
+        <div class="drip"></div>
+        <div class="layer one"></div>
+        <div class="layer two"></div>
+        <div class="layer three"></div>
+      </div>
+
+      <div id="plate"></div>
+      <button onclick="blowCandle()">Blow Candle 💨</button>
+    </div>
   </div>
 
-  <div id="yesMessage">
-    <h2>She Said YES 🥹💍❤️</h2>
-    <p>
-      You just made me the happiest person alive 💖<br>
-      I promise to love you forever ♾️
-    </p>
+  <!-- RIGHT -->
+  <div>
+    <div id="proposalBox">
+      <h2>💍 Will you marry me, Nani? 💖</h2>
+      <button onclick="sayYes()">YES 😭❤️</button>
+    </div>
   </div>
 
-  <script>
-    function playMusic() {
-      document.getElementById("bgMusic").play();
-    }
+</div>
 
-    /* TYPING EFFECT */
-    const text = 
-`Happy Birthday, my beautiful nani 🎉💖
+<audio id="bgMusic">
+  <source src="song/musik.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const text=`Happy Birthday, my beautiful nani 🎉💖
 2nd January became special the day you were born, and my life became brighter the day you walked into it🎊
 Nani you are not just my girlfriend, you are my happiness, my comfort, my safe place, and my biggest blessing 😇😇 Every time I see your smile, my heart feels lighter, and every time I hear your voice, the world feels calmer 🫶💞
 You have the purest heart, the most beautiful soul, and a smile that can fix even my worst days 😊💗 The way you care, the way you love, and the way you understand me without even saying a word… it means everything to me 🥺❤️ I’m so grateful to have someone like you by my side.
@@ -125,51 +293,62 @@ Enjoy your day to the fullest, nani 🎂🎈 Smile a little more, laugh a little
 Once again, Happy Birthday, my nani 🎉💖
 I love you more than words can ever express 😘💫💞`;
 
-    let index = 0;
+let i=0;
 
-    function startTyping() {
-      document.getElementById("messageBox").style.display = "block";
-      if (index < text.length) {
-        document.getElementById("typedMessage").innerHTML += text.charAt(index);
-        index++;
-        setTimeout(startTyping, 50);
-      }
-    }
+function celebrate(){
+  bgMusic.play();
+  messageBox.style.display="block";
+  fireworks();
+  typeText();
+}
 
-    function showProposal() {
-      document.getElementById("proposal").style.display = "block";
-    }
+function typeText(){
+  if(i < text.length){
+    typedMessage.innerHTML += text.charAt(i++);
+    setTimeout(typeText,40);
+  } else {
+    setTimeout(() => {
+      proposalBox.style.display = "block";
+    }, 800);
+  }
+}
 
-    function sayYes() {
-      document.getElementById("proposal").style.display = "none";
-      document.getElementById("yesMessage").style.display = "block";
-      createFireworks();
-    }
+function cutCake(){
+  cakeArea.style.display="block";
+  fireworks();
+}
 
-    /* FLOATING HEARTS */
-    setInterval(() => {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = "💖";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = Math.random() * 20 + 20 + "px";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
-    }, 400);
+function blowCandle(){
+  flame.style.opacity="0";
+  fireworks();
+}
 
-    /* FIREWORKS */
-    function createFireworks() {
-      for (let i = 0; i < 15; i++) {
-        const fw = document.createElement("div");
-        fw.className = "firework";
-        fw.style.left = Math.random() * 100 + "vw";
-        fw.style.top = Math.random() * 50 + "vh";
-        fw.style.background = `hsl(${Math.random() * 360},100%,60%)`;
-        document.body.appendChild(fw);
-        setTimeout(() => fw.remove(), 1500);
-      }
-    }
-  </script>
+function sayYes(){
+  fireworks();
+  alert("She said YES 💖💍");
+}
+
+function fireworks(){
+  for(let i=0;i<35;i++){
+    const f=document.createElement("div");
+    f.className="firework";
+    f.style.left=Math.random()*100+"vw";
+    f.style.top=Math.random()*60+"vh";
+    f.style.background=`hsl(${Math.random()*360},100%,60%)`;
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),2000);
+  }
+}
+
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💖";
+  h.style.left=Math.random()*100+"vw";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},600);
+</script>
 
 </body>
 </html>
